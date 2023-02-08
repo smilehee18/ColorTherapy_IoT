@@ -1,0 +1,169 @@
+extends ./layout.pug
+block content
+    nav(class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav")
+     a(class="navbar-brand js-scroll-trigger" href="#page-top") My Color Therapy
+      i(class="fas fa-heart")
+     button(class="navbar-toggler btn" style="background-color:#9999ff" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-expanded="false" aria-label="Toggle navigation")
+      span(class="navbar-toggler-icon")
+     div(class="collapse navbar-collapse" id="navbarResponsive")
+       ul(class="navbar-nav ml-auto my-2 my-lg-0")
+         li(class="nav-item")
+          a(class="text-success nav-link js-scroll-trigger font-weight-bold" href="#record") 기록 보기
+         li(class="nav-item")
+          a(class="text-success nav-link js-scroll-trigger font-weight-bold" href="#graph") 그래프로 보기
+         li(class="nav-item")
+          a(class="text-success nav-link js-scroll-trigger font-weight-bold" href="#se_button") LED &amp; LCD 제어하기
+         li(class="nav-item")
+          a(class="text-success nav-link js-scroll-trigger font-weight-bold" href="#se_color") 색상 설명 보기
+         li(class="nav-item")
+          a(class="text-success nav-link js-scroll-trigger font-weight-bold" href="#se_footer") 문의하기
+    section(class="page-section text-dark bg-white" id="page-top")
+     div(class="container" align="center")
+        a(class=" navbar-brand js-scroll-trigger" href="#page-top") My Color therapy
+        h1(class="font-weight-bold text-center text-dark") 실시간 실내 환경 모니터링
+          span(class="spinner-grow spinner-grow-sm")
+        br
+        div(class="memo" align="center") 
+          p(class="text-dark-50 font-weight-bold mb-12") 불쾌지수 65 미만 : 전원 쾌적한 상태 
+           ins(style="color:green" class="font-weight-bold") Level 1
+           =" "
+           i(style="color:green" class="fas fa-thumbs-up")
+          p(class="text-dark-50 font-weight-bold mb-12") 불쾌지수 68 이상 75 미만 :  불쾌감을 느끼기 시작 
+           ins(style="color:blue" class="font-weight-bold") Level 2
+          p(class="text-dark-50 font-weight-bold mb-12") 불쾌지수 75 이상 80 미만 :  1/2정도 불쾌감을 느낌
+           ins(style="color:purple" class="font-weight-bold") Level 3  
+          p(class="text-dark-50 font-weight-bold mb-12") 불쾌지수 80이상 :  전원 불쾌감을 느낌 
+           ins(style="color:red" class="font-weight-bold") Level 4
+           =" "
+           i(style="color:red" class="fas fa-thumbs-down")
+        br
+
+        //- input(type="range" class="form-label" name="bright" min="0" max="90" step="30" value="30" list="tickmarks")
+          
+        table(border="1" style="width:90%;" class="text-center table table-bordered" align="center")
+          tr  
+            th Temp (온도)
+            th Humid (습도)
+            th 불쾌지수 
+            th Level 
+          tr 
+            td #{temp}
+            td #{humi}
+            td #{discom}
+            td #{level}
+        h1(class="font-weight-bold text-center text-dark" id="record") 최근 측정 기록
+        p(class="text-dark-50 font-weight-bold mb-12") 8초마다 한 번씩 측정값이 기록됩니다.
+        img(src='')
+        br
+        button(onclick="handleChart(this)" id="rbutton" class="btn btn-lg btn-outline-info") 표 숨기기
+        form(action="/delete" method="POST")
+          button(type="submit" name="seq" value="del" class="btn btn-primary btn-lg") 기록 삭제하기
+        br
+        table(width="80%" style="width:90%;" class="table text-center table-striped table-bordered table-condensed" align="center" id="table")
+          tr 
+            th No.
+            th Temp (온도)
+            th Humid (습도)
+            th 불쾌지수 
+            th Level 
+          each records, index in record
+            tr 
+              td(id="idx") #{index+1}
+              td(id="temp"+index) #{records.temp}
+              td(id="humid"+index) #{records.humid}
+              td(id="discom"+index) #{records.discom}
+              td #{records.level}
+    section(class="page-section bg-white")
+     div(class="container" align="center" id="graph")
+        button(onclick="dataChart(this)" id="cbutton" class="btn btn-lg btn-outline-success") 그래프로 보기
+        canvas(id="dataChart" width="70%")
+    section(class="page-section bg-secondary" id="se_button")
+     div(class="container" align="center")
+        div(class="col-lg-8 text-center")
+         h1(class="text-white mt-0") 분위기를 전환하고 싶으신가요?
+         h1(class="text-white mt-0") 원하는 색상을 선택해보세요
+         br
+         h4(class="text-dark-50 font-weight-bold mb-12") 버튼을 누르면 해당 색상의 LED가 작동합니다. 
+          //button(type="submit" name="color" value="on" class="btn btn-primary bth-lg") LedON
+          //tton(type="submit" name="color" value="off" class="btn btn-primary bth-lg") LedOFF
+        br
+        form(action="/action" method="POST")
+          //- p(class="text-dark-50 mb-8") 툴바를 이동하여 밝기를 조절할 수 있습니다 (밝기 조절 뒤 버튼 클릭)
+          //- div(class="input")
+          //-   input(type="range" class="form-label" name="bright" min="0" max="100" step="10" value=bright)
+          hr(class="divider my-12")
+          button(type="submit" name="color" value="red" class="btn btn-primary btn-lg") RED
+          ="  "
+          button(type="submit" name="color" value="green" class="btn btn-success btn-lg") GREEN
+          ="  "
+          button(type="submit" name="color" value="blue" class="btn btn-info btn-lg") BLUE
+          ="  "
+          button(type="submit" name="color" value="purple" class="btn btn-lg" style="background-color:mediumorchid") PURPLE
+          ="  "
+          button(type="submit" name="color" value="yellow" class="btn btn-warning btn-lg" style="color:black") YELLOW
+          ="  "
+          button(type="submit" name="color" value="skyblue" class="btn btn-lg" style="background-color:cyan") SKYBLUE
+          ="  "
+          button(type="submit" name="color" value="white" class="btn btn-lg" style="background-color:white") WHITE
+          ="  "
+          button(type="submit" class="random" name="color" value="random" class="btn btn-lg" style="background-color:white") RANDOM
+          ="  "
+          button(type="submit" name="color" value="off" class="btn btn-primary btn-lg") LedOFF
+          ="  "
+          hr(class="divider my-12")
+        form(action="/set" method="POST")
+          br
+          h4(class="text-dark-50 mb-8 font-weight-bold" ) 또한 LCD를 ON/OFF 할 수 있습니다.
+          br
+          span(class="input")
+            button(type="submit" name="lcdset" class="btn btn-lg btn-outline-warning" style="background-color:red" value="off" id="lcd") LCD 끄기
+            ="  "
+            button(type="submit" name="lcdset" class="btn btn-lg btn-outline-info btn-warning" style="background-color:blue" value="on" id="lcd") LCD 켜기
+          //- div(class="input")
+          //-    button(type="submit" name="lcdset" class="btn btn-lg" style="background-color:white" value="off") LCD 끄기
+    header(class="masthead")
+     section(class="page-section" id="se_color")
+      div(class="row")
+        div(id="red" class="col-lg-6 col-md-6 text-center")
+          div(class="mt-3")
+            i(class="fas fa-4x fa-fire text-primary")
+            h2(class="h4 mb-2") 정열의 빨간색
+            p(class="text-muted-mb-0 font-weight-bold") 무기력하거나 의기소침한 기분이 들 때, 열정과 생명력을 상징하는 빨간색은 어떤가요?
+        div(id="blue" class="col-lg-6 col-md-6 text-center") 
+          div(class="mt-3")
+            i(class="fas fa-4x fa-cloud text-info")
+            h2(class="h4 mb-2") 차분한 파란색
+            p(class="text-muted-mb-0 font-weight-bold") 불면증이 있을 때 파란색은 큰 도움이 됩니다. 
+            p(class="text-muted-mb-0 font-weight-bold") 차분한 분위기를 조성하고 식욕 억제의 효과도 있습니다.
+      div(class="row")
+        div(class="col-lg-6 col-md-6 text-center")
+          div(class="mt-3")
+            i(class="fas fa-4x fa-tree text-success")
+            h2(class="h4 mb-2") 안정된 초록색
+            p(class="text-muted-mb-0 font-weight-bold") 눈의 피로를 풀어줍니다. 오랬동안 앉아 있어야 하거나 주의를 집중해야 할 때 추천합니다.
+        div(class="col-lg-6 col-md-6 text-center")
+          div(class="mt-3")
+            i(class="fas fa-4x fa-mug-hot" style="color:purple")
+            h2(class="h4 mb-2") 치유의 보라색
+            p(class="text-muted-mb-0 font-weight-bold") 오늘 하루 안 좋은 일이 있었다면 몸과 마음의 스트레스를 풀어주는 보라색은 어떤가요?
+      div(class="row")
+        div(class="col-lg-6 col-md-6 text-center")
+          div(class="mt-3")
+           i(class="fas fa-4x fa-lightbulb text-warning")
+           h2(class="h4 mb-2") 즐거운 노란색
+           p(class="text-muted-mb-0 font-weight-bold") 신나는 모임에는 노란색이 안성맞춤! 
+           p(class="text-muted-mb-0 font-weight-bold") 공간을 밝혀주는 효과와 동시에 변비와 피부 트러블을 호전시켜주는 효과도 있어요.
+        div(class="col-lg-6 col-md-6 text-center")
+          div(class="mt-3")
+           i(class="fas fa-4x fa-lightbulb" style="color:powderblue")
+           h2(class="h4 mb-2") 자유로운 하늘색
+           p(class="text-muted-mb-0 font-weight-bold") 자유로운 영혼에 몸을 맡기고 싶다면 하늘색 전등을 추천합니다. 
+           p(class="text-muted-mb-0 font-weight-bold") 실내를 환하게 밝혀주는 효과도 있어요.  
+    header(class="masthead" id="se_footer")
+       div(class="container text-muted text-center") 
+          br
+          br
+          p(class="text-dark font-weight-bold text-center") Phone : +82 010-0000-0000 
+          p(class="text-dark font-weight-bold text-center") 
+            a(class="d-block" href="mailto:smilehee18@hansung.ac.kr") E-mail : smilehee18@hansung.ac.kr
+          p(class="text-dark font-weight-bold text-center") Copyright © 2023 - My Color Therapy Project - 
