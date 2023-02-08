@@ -48,8 +48,6 @@ function dataChart(x)
     havg = hsum/rlength;
     disavg = dissum/rlength;
 
-  // var ctx = document.getElementById('dataChart');
-
     const data = {
       labels : [
         '최솟값',
@@ -95,24 +93,15 @@ function dataChart(x)
   if(btn.innerHTML == '그래프로 보기')
   {
     chart.style.display = '';
-    //btn.innerHTML = "차트 숨기기";
     btn.style.display = 'none';
-
   }
-  // if(btn.ineerHTML == '차트 숨기기')// 차트 보여졌는데 버튼을 눌렀을 때
-  // {
-  //   chart.style.display = 'none';
-  //   btn.innerHTML = "차트 보기";
-  // }
-  
-
 }
 
 function handleChart(x)
 {
   var table = document.getElementById("table");
   var btn = document.getElementById("rbutton");
-  if(table.style.display == "none")
+  if(table.style.display == "none") //표가 안보이는데 버튼을 누르면
   {
     table.style.display = '';
     btn.innerHTML = "표 숨기기";
