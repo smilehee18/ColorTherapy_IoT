@@ -20,6 +20,7 @@ $ npm i express pug mongoose serialport @serialport/parser-readline
 ```
 + #### MVC 구조
 <img width="400" src="https://user-images.githubusercontent.com/123307856/217594222-c96e6437-be88-4a32-8a95-5a98eddc912e.jpg">
+
 + #### 아두이노 회로도
 <img width="600" src="https://user-images.githubusercontent.com/123307856/217582048-165fb691-a7b2-4b6f-9f76-76fc6a0571a4.png">
 
