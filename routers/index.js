@@ -77,7 +77,7 @@ router.get('/', function (req, res) {
 //LED 색상 제어시 필요한 라우터
 router.post('/action', function (req, res) {
    //var id = req.query.id;
-   var color = req.body.color    //POST방식으로 color값의 value를 다읽어온다
+   var color = req.body.color    //POST방식으로 color값의 value를 읽어온다
    var bright = 100;
 
     if(color == "on"){
