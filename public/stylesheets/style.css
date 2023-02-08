@@ -650,52 +650,10 @@ input[type=button].btn-block {
   border-width: 0.2em;
 }
 
-@-webkit-keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-  }
-}
-.spinner-grow {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-bottom;
-  background-color: currentColor;
-  border-radius: 50%;
-  opacity: 0;
-  -webkit-animation: spinner-grow 0.75s linear infinite;
-          animation: spinner-grow 0.75s linear infinite;
-}
-
-.spinner-grow-sm {
-  width: 1rem;
-  height: 1rem;
-}
-
 hr.divider {
   max-width: 3.25rem;
   border-width: 0.2rem;
   border-color: #f4623a;
-}
-
-hr.light {
-  border-color: #fff;
-}
-
-.btn {
-  font-family: 'Nanum Myeongjo', serif;
 }
 
 .btn-xl {
@@ -841,20 +799,11 @@ header.masthead h1 {
   opacity: 1;
 }
 
-.text-white-75 {
-  color: rgba(255, 255, 255, 0.75);
-}
-
 .memo 
 {
   background-image:url('../note.png');
   background-repeat: no-repeat;
   background-position: 50%;
-}
-
-.ml-auto,
-.mx-auto {
-  margin-left: auto !important;
 }
 
 .fixed-top {
