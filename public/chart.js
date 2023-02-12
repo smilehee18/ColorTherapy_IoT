@@ -112,20 +112,3 @@ function handleChart(x)
     btn.innerHTML = "기록 보기";
   }
 }
-
-function lcdset(x)
-{ 
-  var btn = document.getElementById("lcd");
-  if(btn.innerHTML == "LCD 끄기")
-  {
-    btn.innerHTML = "ffffff";
-  } 
-  else //버튼의 문자열이 LCD 켜기라면,
-  {
-    btn.innerHTML = "LCD 끄기";
-  }
-}
-
-
-
-
