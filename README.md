@@ -19,7 +19,11 @@ $ npm install -g nodemon
 $ npm i express pug mongoose serialport @serialport/parser-readline
 ```
 + #### MVC 구조
-<img src="https://user-images.githubusercontent.com/123307856/218093246-4a41680f-02ff-48ed-bc47-f1229808a0ff.jpg">
+<img height="600" src="https://user-images.githubusercontent.com/123307856/218093246-4a41680f-02ff-48ed-bc47-f1229808a0ff.jpg">
+
++ #### 알고리즘 흐름도
+<img width="550" src="https://user-images.githubusercontent.com/123307856/218314659-05f52060-c2dd-4bdb-87d3-11a7cc9b7b9b.jpg">
+
 
 + #### 아두이노 회로도
 <img width="600" src="https://user-images.githubusercontent.com/123307856/217582048-165fb691-a7b2-4b6f-9f76-76fc6a0571a4.png">
