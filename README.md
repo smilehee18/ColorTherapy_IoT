@@ -12,6 +12,9 @@
     + Express framework
     + PUG 
     + Mongoose DB
++ #### Structure 
+   + webserver ↔️ Arduino : Serial Port
+   + webserver ↔️ website : http protocol 
 
 + #### npm Install
 ```
