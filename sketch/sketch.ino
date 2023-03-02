@@ -196,7 +196,7 @@ void loop() {
         }
       }
 
-   if(state == 1)
+   if(state == 1) //LCD on 버튼 눌렀을때
    {
      lcd.backlight();
      lcd.display();
@@ -204,7 +204,7 @@ void loop() {
      lcd.setCursor(0,1); lcd.print("humid : "); lcd.print(humid); lcd.print("%");
      delay(500);
    }
-   else if (state == 2) //버튼을 눌렀을 때 
+   else if (state == 2) //LCD off 버튼 눌렀을 때 
    {
      lcd.clear();
      lcd.noBacklight();
