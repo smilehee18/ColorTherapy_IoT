@@ -39,6 +39,6 @@ $ npm i express pug mongoose serialport @serialport/parser-readline
 <img width="600" src="https://user-images.githubusercontent.com/123307856/217582430-b61945ee-94f9-4e5e-90aa-58953a54cc85.jpg">
 
 + #### 작동사진
-https://youtu.be/JVtP7QYKsec
+https://youtu.be/ejCQV9kAlnM
 <img src="https://user-images.githubusercontent.com/123307856/218093523-11c13c4d-df96-48fd-9e3c-9d9acbed9a5b.gif">
 
