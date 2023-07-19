@@ -42,3 +42,6 @@ $ npm i express pug mongoose serialport @serialport/parser-readline
 https://youtu.be/ejCQV9kAlnM
 <img src="https://user-images.githubusercontent.com/123307856/218093523-11c13c4d-df96-48fd-9e3c-9d9acbed9a5b.gif">
 
++ #### 수상
+  + 한성대 제 7회 창의융합경진대회 동상 수상 🥉
+
